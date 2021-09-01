@@ -14,12 +14,14 @@ class CloudAPI:
     def finish_simulation(
         cls,
         simulation_uuid: Union[str, UUID],
+        data: dict,
         emergency: bool = False
     ) -> Tuple[Union[dict, UJSONResponse], bool]:
         params = None if not emergency else dict(is_emergency=True)
         response = cls.request.post(
             f'/root/simulation/{str(simulation_uuid)}/finish',
-            parameters=params
+            parameters=params,
+            json=data
         )
         if not response.ok:
             return to_response(response), True
