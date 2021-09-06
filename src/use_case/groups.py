@@ -55,7 +55,6 @@ class ValidateDiseaseGroup:
 
     @classmethod
     def handle(cls, data: List[dict]) -> DiseaseStates:
-
         distribution_dict = {
             "diagnosis": "diagnosis_prob",
             "isolation": "isolation_days",
