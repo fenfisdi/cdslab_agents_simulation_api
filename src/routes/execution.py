@@ -3,7 +3,8 @@ from starlette.status import HTTP_200_OK, HTTP_500_INTERNAL_SERVER_ERROR
 
 from src.use_case import (
     FinishEmergencyExecution,
-    ValidateDiseaseGroup, ValidateSimpleGroup,
+    ValidateQuarantineGroups,
+    ValidateSimpleGroup,
     ValidateSusceptibilityGroup
 )
 from src.utils.messages import SimulationMessage
@@ -28,7 +29,16 @@ def execute_simulation(data: dict):
             data.get("susceptibility_groups")
         )
 
-        disease_group = ValidateDiseaseGroup.handle(data.get("disease_groups"))
+        # disease_group = ValidateDiseaseGroup.handle(data.get("disease_groups"))
+        #
+        # natural_history = ValidateNaturalHistoryGroup.handle(
+        #     data.get("natural_history")
+        # )
+
+        quarantine = ValidateQuarantineGroups.handle(
+            data.get("quarantine"),
+            data.get("quarantine_groups")
+        )
 
         return UJSONResponse(SimulationMessage.success, HTTP_200_OK)
     except Exception as error:

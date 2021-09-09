@@ -2,8 +2,10 @@ from .execution import FinishEmergencyExecution
 from .files import ReadBucketFile, UploadBucketFile
 from .groups import (
     ValidateDiseaseGroup,
+    ValidateNaturalHistoryGroup,
+    ValidateQuarantineGroups,
     ValidateSimpleGroup,
-    ValidateSusceptibilityGroup
+    ValidateSusceptibilityGroup,
 )
 
 __all__ = [
@@ -12,5 +14,7 @@ __all__ = [
     'FinishEmergencyExecution',
     'ValidateSimpleGroup',
     'ValidateSusceptibilityGroup',
-    'ValidateDiseaseGroup'
+    'ValidateDiseaseGroup',
+    'ValidateNaturalHistoryGroup',
+    'ValidateQuarantineGroups'
 ]
