@@ -15,9 +15,7 @@ class ReadBucketFile:
         storage_client = storage.Client()
         bucket = storage_client.bucket(bucket_name)
         blob = bucket.blob(blob_name)
-
         result = blob.download_to_filename()
-        print(result)
 
 
 class TransformFileDistribution:
@@ -33,9 +31,10 @@ class UploadBucketFile:
     def handle(cls, simulation_uuid: Union[UUID, str], file: bytes):
         file_name = uuid1()
         bucket_name = environ.get("GCP_BUCKET_NAME")
+        project_name = environ.get("GCP_PROJECT")
         blob_name = "/".join([str(simulation_uuid), "out", str(file_name)])
 
-        storage_client = storage.Client()
+        storage_client = storage.Client(project=project_name)
         bucket = storage_client.bucket(bucket_name)
         blob = bucket.blob(blob_name)
 
