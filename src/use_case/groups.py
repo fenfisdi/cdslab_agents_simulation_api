@@ -123,7 +123,10 @@ class ValidateQuarantineGroups:
             )
             cls._get_global_cyclic(general_data)
         if general_data.get("has_tracing_restrictions"):
-            print("Tambien")
+            cls._get_tracing_policies(
+                quarantine_groups,
+                cyclic_data.get("")
+            )
 
     @classmethod
     def _get_quarantine_groups(cls, data: List[dict]) -> SimpleGroups:
@@ -176,3 +179,10 @@ class ValidateQuarantineGroups:
             )
 
         return mr_data
+
+    @classmethod
+    def _get_tracing_policies(
+        cls,
+        groups: SimpleGroups
+    ) -> dict:
+        pass
