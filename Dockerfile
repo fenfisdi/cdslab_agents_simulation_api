@@ -17,6 +17,7 @@ WORKDIR ${APP_HOME}
 COPY src src
 COPY main.py .
 COPY docker-entrypoint.sh .
+COPY api.json /tmp/api_key.json
 
 
 ENTRYPOINT ["/bin/bash"]
