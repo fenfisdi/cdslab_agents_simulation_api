@@ -1,0 +1,1435 @@
+  {
+    "configuration": {
+      "identifier": "19722a38-d144-11eb-b891-3513f53f7bf3",
+      "name": "chinga madre",
+      "population_number": 3000000,
+      "interval_date": {
+        "start": "2013-10-29T19:00:00",
+        "end": "2015-10-29T19:00:00"
+      },
+      "iteration_time": 4,
+      "iteration_time_units": "hours",
+      "iteration_number": 0,
+      "box_size": {},
+      "distance_units": "kilometers",
+      "user": "60cb9676fb69bb86105a4310"
+    },
+    "health_system":{
+      "hospital_capacity":30,
+      "ICU_capacity":15
+    },
+    "age_groups": [
+      {
+        "identifier": "c2fd046c-d2a5-11eb-8f4a-5b815ab8b404",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "asd",
+        "population_percentage": 0.5
+      },
+      {
+        "identifier": "c2fdacf0-d2a5-11eb-8f4a-5b815ab8b404",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "dsa",
+        "population_percentage": 0.4
+      }
+    ],
+    "vulnerability_groups": [
+      {
+        "identifier": "845f175e-de76-11eb-a4ea-19552a39be29",
+        "name": "any name in back",
+        "configuration": "60ce5f7dbc2b5448f53d6e90"
+      },
+      {
+        "identifier": "845f7db6-de76-11eb-a4ea-19552a39be29",
+        "name": "any other name in back",
+        "configuration": "60ce5f7dbc2b5448f53d6e90"
+      }
+    ],
+    "mobility_groups": [
+      {
+        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "MG_1",
+        "angle_variance": 0.1,
+        "dist_info": {
+          "dist_title": "mobility_profile",
+          "dist_type": "empirical",
+          "constant": null,
+          "dist_name": null,
+          "filename": "DistribucionVelocidades.txt",
+          "data": null,
+          "kwargs": {}
+        }
+      },
+      {
+        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "MG_2",
+        "angle_variance": 0.2,
+        "dist_info": {
+          "dist_title": "mobility_profile",
+          "dist_type": "empirical",
+          "constant": 0.3,
+          "dist_name": null,
+          "filename": "mobility_profile_medellin.csv",
+          "data": null,
+          "kwargs": {}
+        }
+      }
+    ],
+    "susceptibility_groups": [
+      {
+        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "distribution": {
+          "type": "constant",
+          "numpy_type": null,
+          "file_id": null,
+          "kwargs": {
+            "constant": "5"
+          }
+        },
+        "name": "susceptibility group 1"
+      },
+      {
+        "identifier": "3dc0be96-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "distribution": {
+          "type": "constant",
+          "numpy_type": null,
+          "file_id": null,
+          "kwargs": {
+            "constant": "5"
+          }
+        },
+        "name": "susceptibility group 1"
+      }
+    ],
+
+    "disease_groups": [
+      {
+        "identifier": "754ca8b4-e0ef-11eb-a7c3-134c296ec3fb",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "something",
+        "is_death": false,
+        "distributions": {}
+      },
+      {
+        "identifier": "792d821e-e0ef-11eb-9922-b5a050642a75",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "any other name",
+        "is_death": false,
+        "distributions": {
+          "isolation": {
+            "type": "empirical",
+            "numpy_type": null,
+            "kwargs": {},
+            "file_id": "cb0dbc40-e66f-11eb-a026-93c893c5bb81"
+          },
+          "diagnosis": {
+            "type": "empirical",
+            "numpy_type": null,
+            "kwargs": {},
+            "file_id": "24129314-e671-11eb-a026-93c893c5bb81"},
+          "icu": {
+            "type": "empirical",
+            "numpy_type": null,
+            "kwargs": {}
+          }
+        }
+      },
+      {
+        "identifier": "799002cc-e0ef-11eb-9922-b5a050642a75",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "something",
+        "is_death": false,
+        "distributions": {}
+      },
+      {
+        "identifier": "79e3982e-e0ef-11eb-9922-b5a050642a75",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "something",
+        "is_death": false,
+        "distributions": {}
+      },
+      {
+        "identifier": "7e704126-e0ef-11eb-9922-b5a050642a75",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "death",
+        "is_death": true,
+        "can_infected": false,
+        "is_infected": false,
+        "can_spread": false,
+        "distributions": {}
+      },
+      {
+        "identifier": "fcbdf9d4-e328-11eb-b5e4-7d3d3396b903",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "name": "something",
+        "is_death": false,
+        "distributions": {}
+      }
+    ],
+    "natural_history": [
+      {
+        "identifier": "fcbdf9d4-e328-11eb-b5e4-7d3d3396b903",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "groups":[
+          {
+              "vulnerability_group": "not_vulnerable",
+              "disease_group": "susceptible",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": true,
+              "transitions": [
+                  {
+                      "transition_name": "latency",
+                      "probability": 1.0,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": "constant",
+                      "constant": 0.6,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "vulnerable",
+              "disease_group": "susceptible",
+              "avoidance_radius": 4.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": true,
+              "transitions": [
+                  {
+                      "transition_name": "latency",
+                      "probability": 1.0,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": "constant",
+                      "constant": 1.0,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "not_vulnerable",
+              "disease_group": "latency",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "infectious",
+                      "probability": 1.0,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 16,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": "constant",
+                      "constant": 0.6,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "vulnerable",
+              "disease_group": "latency",
+              "avoidance_radius": 4.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "infectious",
+                      "probability": 1.0,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 16,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": "constant",
+                      "constant": 1.0,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "not_vulnerable",
+              "disease_group": "infectious",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "hospital",
+                      "probability": 0.3,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "ICU",
+                      "probability": 0.1,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "immune",
+                      "probability": 0.6,
+                      "immunization_gain": 0.5,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 40,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "vulnerable",
+              "disease_group": "infectious",
+              "avoidance_radius": 4.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": true,
+              "transitions": [
+                  {
+                      "transition_name": "hospital",
+                      "probability": 0.6,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "ICU",
+                      "probability": 0.3,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "immune",
+                      "probability": 0.3,
+                      "immunization_gain": 0.5,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 40,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "not_vulnerable",
+              "disease_group": "hospital",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "ICU",
+                      "probability": 0.2,
+                      "immunization_gain": 0.5,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "immune",
+                      "probability": 0.7,
+                      "immunization_gain": 1.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "dead",
+                      "probability": 0.1,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 20,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "vulnerable",
+              "disease_group": "hospital",
+              "avoidance_radius": 4.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "ICU",
+                      "probability": 0.4,
+                      "immunization_gain": 0.5,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "immune",
+                      "probability": 0.4,
+                      "immunization_gain": 1.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "dead",
+                      "probability": 0.2,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 20,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "not_vulnerable",
+              "disease_group": "ICU",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "immune",
+                      "probability": 0.7,
+                      "immunization_gain": 1.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "dead",
+                      "probability": 0.3,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 20,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "vulnerable",
+              "disease_group": "ICU",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "immune",
+                      "probability": 0.4,
+                      "immunization_gain": 1.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  },
+                  {
+                      "transition_name": "dead",
+                      "probability": 0.6,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": null,
+                          "constant": null,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 20,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "not_vulnerable",
+              "disease_group": "immune",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "susceptible",
+                      "probability": 1.0,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 80,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          },
+          {
+              "vulnerability_group": "vulnerable",
+              "disease_group": "immune",
+              "avoidance_radius": 2.0,
+              "avoidance_radius_unit": "meters",
+              "transition_by_contagion": false,
+              "transitions": [
+                  {
+                      "transition_name": "susceptible",
+                      "probability": 1.0,
+                      "immunization_gain": 0.0,
+
+                      "dist_info": {
+                          "dist_title": "immunization_time_distribution",
+                          "dist_type": "constant",
+                          "constant": 40,
+                          "dist_name": null,
+                          "filename": null,
+                          "data": null,
+                          "kwargs": {}
+                      }
+                  }
+              ],
+              "dist_info": [
+                  {
+                      "dist_title": "time_dist",
+                      "dist_type": "constant",
+                      "constant": 80,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  },
+                  {
+                      "dist_title": "alertness_prob",
+                      "dist_type": null,
+                      "constant": null,
+                      "dist_name": null,
+                      "filename": null,
+                      "data": null,
+                      "kwargs": {}
+                  }
+              ]
+          }
+        ]
+      }
+    ],
+    "quarantine": {
+      "identifier": "973d64d6-ea3b-11eb-8f9f-c747cda12e14",
+      "has_cyclic_restrictions": true,
+      "has_tracing_restrictions": false,
+      "cyclic_restrictions": {
+        "grace_time": "1970-01-01T00:00:05",
+        "global_quarantine": 5,
+        "global_quarantine_units": "minutes",
+        "restriction_mode": "random",
+        "variables": {
+          "28dbc31a-ebc2-11eb-a51f-170a70f70c6f": {
+            "delay": 5,
+            "delay_units": "minutes"
+          },
+          "bab65e8c-eb07-11eb-bf8e-02420a000547": {
+            "delay": 1,
+            "delay_units": "minutes",
+            "length": 2,
+            "length_units": "minutes",
+            "unrestricted_time": 3,
+            "unrestricted_time_units": "minutes"
+          }
+        }
+      },
+      "tracing_restrictions": {},
+      "configuration": "60ce5f7dbc2b5448f53d6e90"
+    },
+    "quarantine_groups": [
+      {
+        "identifier": "270e52de-eb25-11eb-9136-4dc0b2b06c74",
+        "name": "qua 1",
+        "quarantine": "60f842a219f3312ceee9ff60"
+      },
+      {
+        "identifier": "270ea43c-eb25-11eb-9136-4dc0b2b06c74",
+        "name": "qua 2",
+        "quarantine": "60f842a219f3312ceee9ff60"
+      },
+      {
+        "identifier": "270eda06-eb25-11eb-9136-4dc0b2b06c74",
+        "name": "qua 3",
+        "quarantine": "60f842a219f3312ceee9ff60"
+      }
+    ],
+    "isolation_adherence_groups": [
+      {
+        "name": "adherence_1",
+        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "dist_info": {
+            "dist_title": "adherence_prob",
+            "dist_type": "constant",
+            "constant": 0.8,
+            "dist_name": null,
+            "filename": null,
+            "data": null,
+            "kwargs": {}
+        }
+      },
+      {
+        "name": "adherence_2",
+        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "dist_info": {
+          "dist_title": "adherence_prob",
+          "dist_type": "constant",
+          "constant": 0.4,
+          "dist_name": null,
+          "filename": null,
+          "data": null,
+          "kwargs": {}
+        }
+      }
+    ],
+    "immunization_groups":[
+      {
+        "name": "not_immunized",
+        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "dist_info": [
+            {
+              "dist_title": "immunization_level_dist",
+              "dist_type": "constant",
+              "constant": 0.0,
+              "dist_name": null,
+              "filename": null,
+              "data": null,
+              "kwargs": {}
+            },
+            {
+              "dist_title": "immunization_time_distribution",
+              "dist_type": null,
+              "constant": null,
+              "dist_name": null,
+              "filename": null,
+              "data": null,
+              "kwargs": {}
+            }
+        ]
+      },
+      {
+        "name": "immunized",
+        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
+        "configuration": "60ce5f7dbc2b5448f53d6e90",
+        "dist_info": [
+            {
+              "dist_title": "immunization_level_dist",
+              "dist_type": "constant",
+              "constant": 0.7,
+              "dist_name": null,
+              "filename": null,
+              "data": null,
+              "kwargs": {}
+            },
+            {
+              "dist_title": "immunization_time_distribution",
+              "dist_type": "constant",
+              "constant": 30,
+              "dist_name": null,
+              "filename": null,
+              "data": null,
+              "kwargs": {}
+            }
+        ]
+      }
+    ],
+
+    "mrt_policies":[
+      {
+        "dead by disease": {
+            "variable":"dead by disease",
+            "mr_start_level":100,
+            "mr_stop_mode":"level_number",
+            "mr_stop_level":20,
+            "mr_groups":["G_1", "G_2", "G_3"],
+            "target_groups":["G_1", "G_3"]
+        },
+        "diagnosed": {
+                "variable":"diagnosed",
+                "mr_start_level":100,
+                "mr_stop_mode":"length",
+                "mr_length":30,
+                "mr_length_units":"days",
+                "mr_groups":["G_1", "G_2", "G_3"],
+                "target_groups":["G_1", "G_3"]
+        }
+      }
+    ],
+    "initial_population_setup_list" : [
+      {
+          "core_var": "age_group",
+          "nested_vars": [],
+          "settings": {
+              "child": 0.12,
+              "teenager": 0.13,
+              "vicenarian": 0.16,
+              "tricenarian": 0.15,
+              "quadragenarian": 0.13,
+              "quinquagenarian": 0.15,
+              "sexagenarian": 0.16
+          }
+      },
+      {
+          "core_var": "vulnerability_group",
+          "nested_vars": ["age_group"],
+          "settings": {
+              "child": {
+                  "not_vulnerable": 0.95,
+                  "vulnerable": 0.05
+              },
+              "teenager": {
+                  "not_vulnerable": 0.90,
+                  "vulnerable": 0.10
+              },
+              "vicenarian": {
+                  "not_vulnerable": 0.85,
+                  "vulnerable": 0.15
+              },
+              "tricenarian": {
+                  "not_vulnerable": 0.80,
+                  "vulnerable": 0.20
+              },
+              "quadragenarian": {
+                  "not_vulnerable": 0.75,
+                  "vulnerable": 0.25
+              },
+              "quinquagenarian": {
+                  "not_vulnerable": 0.70,
+                  "vulnerable": 0.30
+              },
+              "sexagenarian": {
+                  "not_vulnerable": 0.60,
+                  "vulnerable": 0.40
+              }
+          }
+      },
+      {
+          "core_var": "susceptibility_group",
+          "nested_vars": ["age_group"],
+          "settings": {
+              "child": {
+                  "suscept_1": 0.35,
+                  "suscept_2": 0.65
+              },
+              "teenager": {
+                  "suscept_1": 0.85,
+                  "suscept_2": 0.15
+              },
+              "vicenarian": {
+                  "suscept_1": 0.25,
+                  "suscept_2": 0.75
+              },
+              "tricenarian": {
+                  "suscept_1": 0.55,
+                  "suscept_2": 0.45
+              },
+              "quadragenarian": {
+                  "suscept_1": 0.90,
+                  "suscept_2": 0.10
+              },
+              "quinquagenarian": {
+                  "suscept_1": 0.40,
+                  "suscept_2": 0.60
+              },
+              "sexagenarian": {
+                  "suscept_1": 0.30,
+                  "suscept_2": 0.70
+              }
+          }
+      },
+      {
+          "core_var": "immunization_group",
+          "nested_vars": ["age_group"],
+          "settings": {
+              "child": {
+                  "immunized": 0.05,
+                  "not_immunized": 0.95
+              },
+              "teenager": {
+                  "immunized": 0.10,
+                  "not_immunized": 0.90
+              },
+              "vicenarian": {
+                  "immunized": 0.20,
+                  "not_immunized": 0.80
+              },
+              "tricenarian": {
+                  "immunized": 0.35,
+                  "not_immunized": 0.65
+              },
+              "quadragenarian": {
+                  "immunized": 0.65,
+                  "not_immunized": 0.35
+              },
+              "quinquagenarian": {
+                  "immunized": 0.75,
+                  "not_immunized": 0.25
+              },
+              "sexagenarian": {
+                  "immunized": 0.70,
+                  "not_immunized": 0.30
+              }
+          }
+      },
+      {
+          "core_var": "disease_state",
+          "nested_vars": ["age_group", "vulnerability_group"],
+          "settings": {
+              "child": {
+                  "not_vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  },
+                  "vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  }
+              },
+              "teenager": {
+                  "not_vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  },
+                  "vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  }
+              },
+              "vicenarian": {
+                  "not_vulnerable": {
+                      "susceptible": 0.50,
+                      "latency": 0.00,
+                      "infectious": 0.50,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  },
+                  "vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  }
+              },
+              "tricenarian": {
+                  "not_vulnerable": {
+                      "susceptible": 1.0,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  },
+                  "vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  }
+              },
+              "quadragenarian": {
+                  "not_vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  },
+                  "vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  }
+              },
+              "quinquagenarian": {
+                  "not_vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  },
+                  "vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  }
+              },
+              "sexagenarian": {
+                  "not_vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  },
+                  "vulnerable": {
+                      "susceptible": 1.00,
+                      "latency": 0.00,
+                      "infectious": 0.00,
+                      "hospital": 0.00,
+                      "ICU": 0.00,
+                      "immune": 0.00,
+                      "dead": 0.00
+                  }
+              }
+          }
+      },
+      {
+          "core_var": "mobility_group",
+          "nested_vars": ["age_group", "vulnerability_group"],
+          "settings": {
+              "child": {
+                  "not_vulnerable": {
+                      "MG_1": 0.30,
+                      "MG_2": 0.70
+                  },
+                  "vulnerable": {
+                      "MG_1": 0.20,
+                      "MG_2": 0.80
+                  }
+              },
+              "teenager": {
+                  "not_vulnerable": {
+                      "MG_1": 0.45,
+                      "MG_2": 0.55
+                  },
+                  "vulnerable": {
+                      "MG_1": 1.00,
+                      "MG_2": 0.00
+                  }
+              },
+              "vicenarian": {
+                  "not_vulnerable": {
+                      "MG_1": 0.00,
+                      "MG_2": 1.00
+                  },
+                  "vulnerable": {
+                      "MG_1": 0.35,
+                      "MG_2": 0.65
+                  }
+              },
+              "tricenarian": {
+                  "not_vulnerable": {
+                      "MG_1": 0.40,
+                      "MG_2": 0.60
+                  },
+                  "vulnerable": {
+                      "MG_1": 1.00,
+                      "MG_2": 0.00
+                  }
+              },
+              "quadragenarian": {
+                  "not_vulnerable": {
+                      "MG_1": 1.00,
+                      "MG_2": 0.00
+                  },
+                  "vulnerable": {
+                      "MG_1": 0.00,
+                      "MG_2": 1.00
+                  }
+              },
+              "quinquagenarian": {
+                  "not_vulnerable": {
+                      "MG_1": 1.00,
+                      "MG_2": 0.00
+                  },
+                  "vulnerable": {
+                      "MG_1": 0.00,
+                      "MG_2": 1.00
+                  }
+              },
+              "sexagenarian": {
+                  "not_vulnerable": {
+                      "MG_1": 0.00,
+                      "MG_2": 1.00
+                  },
+                  "vulnerable": {
+                      "MG_1": 0.00,
+                      "MG_2": 1.00
+                  }
+              }
+          }
+      },
+      {
+          "core_var": "mr_group",
+          "nested_vars": ["age_group", "vulnerability_group"],
+          "settings": {
+              "child": {
+                  "not_vulnerable": {
+                      "G_1": 0.50,
+                      "G_2": 0.50,
+                      "G_3": 0.00
+                  },
+                  "vulnerable": {
+                      "G_1": 0.50,
+                      "G_2": 0.00,
+                      "G_3": 0.50
+                  }
+              },
+              "teenager": {
+                  "not_vulnerable": {
+                      "G_1": 0.00,
+                      "G_2": 0.50,
+                      "G_3": 0.50
+                  },
+                  "vulnerable": {
+                      "G_1": 0.50,
+                      "G_2": 0.30,
+                      "G_3": 0.20
+                  }
+              },
+              "vicenarian": {
+                  "not_vulnerable": {
+                      "G_1": 0.20,
+                      "G_2": 0.30,
+                      "G_3": 0.50
+                  },
+                  "vulnerable": {
+                      "G_1": 0.30,
+                      "G_2": 0.20,
+                      "G_3": 0.50
+                  }
+              },
+              "tricenarian": {
+                  "not_vulnerable": {
+                      "G_1": 0.30,
+                      "G_2": 0.20,
+                      "G_3": 0.50
+                  },
+                  "vulnerable": {
+                      "G_1": 0.30,
+                      "G_2": 0.50,
+                      "G_3": 0.20
+                  }
+              },
+              "quadragenarian": {
+                  "not_vulnerable": {
+                      "G_1": 0.50,
+                      "G_2": 0.10,
+                      "G_3": 0.40
+                  },
+                  "vulnerable": {
+                      "G_1": 0.40,
+                      "G_2": 0.15,
+                      "G_3": 0.45
+                  }
+              },
+              "quinquagenarian": {
+                  "not_vulnerable": {
+                      "G_1": 0.40,
+                      "G_2": 0.25,
+                      "G_3": 0.35
+                  },
+                  "vulnerable": {
+                      "G_1": 0.40,
+                      "G_2": 0.30,
+                      "G_3": 0.30
+                  }
+              },
+              "sexagenarian": {
+                  "not_vulnerable": {
+                      "G_1": 0.30,
+                      "G_2": 0.40,
+                      "G_3": 0.30
+                  },
+                  "vulnerable": {
+                      "G_1": 0.35,
+                      "G_2": 0.35,
+                      "G_3": 0.30
+                  }
+              }
+          }
+      }
+    ]
+  }

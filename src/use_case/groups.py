@@ -6,9 +6,19 @@ from abmodel.models.base import SimpleGroups
 from abmodel.models.disease import (
     DiseaseStates,
     NaturalHistory,
-    SusceptibilityGroups
+    SusceptibilityGroups,
+    IsolationAdherenceGroups,
+    ImmunizationGroups,
+    MobilityGroups
 )
-from abmodel.models.mobility_restrictions import CyclicMRGroups, GlobalCyclicMR
+from abmodel.models import (
+    MRTracingPolicies,
+    Configutarion,
+    BoxSize,
+    HealthSystem
+)
+
+from abmodel.models.mobility_restrictions import CyclicMRPolicies, GlobalCyclicMR
 
 
 class ValidateSimpleGroup:
@@ -16,7 +26,6 @@ class ValidateSimpleGroup:
     @classmethod
     def handle(cls, data: List[dict]) -> SimpleGroups:
         return SimpleGroups(names=[group["name"] for group in data])
-
 
 class ValidateSusceptibilityGroup:
 
@@ -55,7 +64,6 @@ class ValidateSusceptibilityGroup:
             dist_title=dist_title,
             group_info=group_info
         )
-
 
 class ValidateDiseaseGroup:
 
@@ -100,13 +108,23 @@ class ValidateDiseaseGroup:
             group_info=group_info
         )
 
-
 class ValidateNaturalHistoryGroup:
 
     @classmethod
     def handle(cls, data: List[dict]) -> NaturalHistory:
-        pass
-
+        dist_title = [
+            "time_dist", "alertness_prob"
+        ]
+        
+        group_info = []
+        for history in data:
+            for group in history.get("groups"):
+                group_info.append(group)
+        
+        return NaturalHistory(
+            dist_title=dist_title,
+            group_info=group
+        )
 
 class ValidateQuarantineGroups:
 
@@ -161,7 +179,7 @@ class ValidateQuarantineGroups:
             name = group.get("name")
             information = data.get(identifier)
             mr_data.update(
-                {name: CyclicMRGroups(
+                {name: CyclicMRPolicies(
                     mr_groups=groups,
                     target_group=name,
                     delay=information.get("delay"),
@@ -186,3 +204,118 @@ class ValidateQuarantineGroups:
         groups: SimpleGroups
     ) -> dict:
         pass
+
+class ValidateIsolationAdherenceGroups:
+    
+    @classmethod
+    def handle(cls, data: List[dict]) -> IsolationAdherenceGroups:
+        dist_title = "adherence_prob"
+        group_info = []
+        for group in data:
+            distribution_data = group.get("distribution_info")
+            group_info.append(distribution_data)
+            
+        return IsolationAdherenceGroups(
+            dist_title=dist_title,
+            group_info=group_info
+        )
+        
+class ValidateImmunizationGroups:
+    
+    @classmethod
+    def handle(cls, data: List[dict]) -> ImmunizationGroups:
+        dist_title = [
+            "immunization_level_dist",
+            "immunization_time_distribution"
+        ]
+        
+        group_info = []
+        for group in data:
+            distribution_data = group.get("distribution_info")
+            temp ={
+                "name": group.get("name"),
+                "dist_info": [data for data in distribution_data]
+            }
+            group_info.append(temp)
+        
+        return ImmunizationGroups(
+            dist_title=dist_title,
+            group_info=group_info
+        )
+    
+class ValidateMobilityGroups:
+    
+    @classmethod
+    def handle(cls, data: List[dict]) -> MobilityGroups:
+        dist_title = "mobility_profile"
+        group_info = []
+        for group in data:
+            group_info.append(group)
+        
+        
+        return MobilityGroups(
+            dist_title=dist_title,
+            group_info=group_info
+        )
+        
+class ValidateMRTPolicies:
+    @classmethod
+    def handle(cls, data: List[dict]) -> dict:
+        policies = {}
+        for mrt in data:
+            mr_groups = []
+            if mrt.get("dead by disease"):
+                police = mrt.get("dead by disease")
+                mr_groups = SimpleGroups(names=police.get("mr_groups"))
+                policies["dead by disease"] = MRTracingPolicies(
+                    variable=police.get("variable"),
+                    mr_start_level=police.get("mr_start_level"),
+                    mr_stop_mode=police.get("mr_stop_mode"),
+                    mr_stop_level=police.get("mr_stop_level"),
+                    mr_groups=mr_groups,
+                    target_groups=police.get("target_groups")
+                )
+            if mrt.get("diagnosed"):
+                police = mrt.get("diagnosed")
+                mr_groups = SimpleGroups(names=police.get("mr_groups"))
+                
+                policies["diagnosed"] = MRTracingPolicies(
+                    variable=police.get("variable"),
+                    mr_start_level=police.get("mr_start_level"),
+                    mr_stop_mode=police.get("mr_stop_mode"),
+                    mr_stop_level=police.get("mr_stop_level"),
+                    mr_groups=mr_groups,
+                    target_groups=police.get("target_groups")
+                )
+                        
+        return policies
+    
+class ValidateinitialPopulationSetupList:
+    
+    @classmethod
+    def handle(cls, data: List[dict]):
+        pass
+            
+class ValidateConfiguration:
+    @classmethod
+    def handle(cls, data: dict) -> Configutarion:
+        return Configutarion(
+            population_number=data.get("population_number"),
+            initial_date=data.get("interval_date").get("start"),
+            final_date=data.get("interval_date").get("end"),
+            iteration_time=data.get("iteration_time"),
+            iterations_number=data.get("iteration_number"),
+            box_size=data.get("box_size"),
+            alpha=0.8,
+            beta=0.4
+        )
+        
+class ValidateHealthSystem:
+    
+    @classmethod
+    def handle(cls, data: dict) -> HealthSystem:
+        
+        return HealthSystem(
+            hospital_capacity=data.get("hospital_capacity"),
+            ICU_capacity=data.get("ICU_capacity")
+        )
