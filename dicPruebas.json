@@ -10,7 +10,12 @@
       "iteration_time": 4,
       "iteration_time_units": "hours",
       "iteration_number": 0,
-      "box_size": {},
+      "box_size": {
+          "left":-100, 
+          "right":100, 
+          "bottom":-110, 
+          "top":100
+        },
       "distance_units": "kilometers",
       "user": "60cb9676fb69bb86105a4310"
     },
@@ -46,8 +51,6 @@
     ],
     "mobility_groups": [
       {
-        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
         "name": "MG_1",
         "angle_variance": 0.1,
         "dist_info": {
@@ -61,8 +64,6 @@
         }
       },
       {
-        "identifier": "3b4dabc4-e02f-11eb-9125-117b85eb3f8b",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
         "name": "MG_2",
         "angle_variance": 0.2,
         "dist_info": {
@@ -981,7 +982,11 @@
         ]
       }
     ],
-
+    "mr_groups":[
+        "G_1", 
+        "G_2", 
+        "G_3"
+    ],
     "mrt_policies":[
       {
         "dead by disease": {
@@ -1431,5 +1436,38 @@
               }
           }
       }
+    ],
+    "global_cyclic_mr": {
+        "enabled":true,
+        "grace_time":"2013-10-29T19:00:00",
+        "global_mr_length":3,
+        "global_mr_length_units":"weeks",
+        "unrestricted_time_mode":"fixed",
+        "unrestricted_time":2,
+        "unrestricted_time_units":"weeks"
+    },
+    "cyclic_mr_policies":[
+        {
+            "G_1": {
+                "mr_groups":["G_1", "G_2", "G_3"],
+                "target_group":"G_1",
+                "delay":20,
+                "delay_units":"days",
+                "mr_length":7,
+                "mr_length_units":"days",
+                "time_without_restrictions":3,
+                "time_without_restrictions_units":"days"
+            },
+            "G_2":{
+                "mr_groups":["G_1", "G_2", "G_3"],
+                "target_group":"G_2",
+                "delay":20,
+                "delay_units":"days",
+                "mr_length":7,
+                "mr_length_units":"days",
+                "time_without_restrictions":3,
+                "time_without_restrictions_units":"days"
+            }
+        }
     ]
   }

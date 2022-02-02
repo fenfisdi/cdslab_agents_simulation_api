@@ -123,7 +123,7 @@ class ValidateNaturalHistoryGroup:
         
         return NaturalHistory(
             dist_title=dist_title,
-            group_info=group
+            group_info=group_info
         )
 
 class ValidateQuarantineGroups:
@@ -212,7 +212,10 @@ class ValidateIsolationAdherenceGroups:
         dist_title = "adherence_prob"
         group_info = []
         for group in data:
-            distribution_data = group.get("distribution_info")
+            distribution_data ={
+                "name": group.get("name"),
+                "dist_info": group.get("dist_info")
+            }
             group_info.append(distribution_data)
             
         return IsolationAdherenceGroups(
@@ -231,7 +234,7 @@ class ValidateImmunizationGroups:
         
         group_info = []
         for group in data:
-            distribution_data = group.get("distribution_info")
+            distribution_data = group.get("dist_info")
             temp ={
                 "name": group.get("name"),
                 "dist_info": [data for data in distribution_data]
@@ -283,7 +286,8 @@ class ValidateMRTPolicies:
                     variable=police.get("variable"),
                     mr_start_level=police.get("mr_start_level"),
                     mr_stop_mode=police.get("mr_stop_mode"),
-                    mr_stop_level=police.get("mr_stop_level"),
+                    mr_length=police.get("mr_length"),
+                    mr_length_units=police.get("mr_length_units"),
                     mr_groups=mr_groups,
                     target_groups=police.get("target_groups")
                 )
@@ -299,16 +303,28 @@ class ValidateinitialPopulationSetupList:
 class ValidateConfiguration:
     @classmethod
     def handle(cls, data: dict) -> Configutarion:
-        return Configutarion(
+        data_box = data.get("box_size")
+        box = None
+        if data_box:
+            box = BoxSize(
+                    left=data_box.get("left"),
+                    right=data_box.get("right"),
+                    bottom=data_box.get("bottom"),
+                    top=data_box.get("top"),
+                )
+            
+        config = Configutarion(
             population_number=data.get("population_number"),
             initial_date=data.get("interval_date").get("start"),
             final_date=data.get("interval_date").get("end"),
             iteration_time=data.get("iteration_time"),
             iterations_number=data.get("iteration_number"),
-            box_size=data.get("box_size"),
+            box_size=box,
             alpha=0.8,
             beta=0.4
         )
+        
+        return config
         
 class ValidateHealthSystem:
     
@@ -319,3 +335,32 @@ class ValidateHealthSystem:
             hospital_capacity=data.get("hospital_capacity"),
             ICU_capacity=data.get("ICU_capacity")
         )
+
+class ValidateMRGroup:
+
+    @classmethod
+    def handle(cls, data: List[str]) -> SimpleGroups:
+        return SimpleGroups(names=data)
+
+        
+class ValidateGlobalCyclicMR:
+    
+    @classmethod
+    def handle(cls, data: dict) -> GlobalCyclicMR:
+        return GlobalCyclicMR(
+            enabled=data.get("enabled"),
+            grace_time=data.get("enabled"),
+            global_mr_length=data.get("enabled"),
+            global_mr_length_units=data.get("enabled"),
+            unrestricted_time_mode=data.get("enabled"),
+            unrestricted_time=data.get("enabled"),
+            unrestricted_time_units=data.get("enabled")
+        )
+    
+class ValidateCyclicMRPolicies:
+    @classmethod
+    def handle(cls, data : List[dict]) -> dict:
+        return {
+            name : CyclicMRPolicies(value) for (name, value) in data.items()
+        }
+       

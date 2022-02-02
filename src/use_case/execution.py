@@ -12,6 +12,7 @@ from src.services import CloudAPI
 from src.use_case.files import UploadBucketFile
 from src.use_case.groups import (
     ValidateDiseaseGroup,
+    ValidateMRGroup,
     ValidateNaturalHistoryGroup,
     ValidateQuarantineGroups,
     ValidateSimpleGroup,
@@ -22,7 +23,9 @@ from src.use_case.groups import (
     ValidateMRTPolicies,
     ValidateinitialPopulationSetupList,
     ValidateConfiguration,
-    ValidateHealthSystem
+    ValidateHealthSystem,
+    ValidateGlobalCyclicMR,
+    ValidateCyclicMRPolicies
 )
 
 
@@ -39,6 +42,8 @@ class StartExecution:
             
             age_groups = ValidateSimpleGroup.handle(data.get("age_groups"))
 
+            mr_groups = ValidateMRGroup.handle(data.get("mr_groups"))
+            
             vulnerability_groups = ValidateSimpleGroup.handle(
                 data.get("vulnerability_groups")
             )
@@ -55,61 +60,56 @@ class StartExecution:
                 data.get("immunization_groups")
             )
             
-            mobility_groups = ValidateMobilityGroups.handle(
-                data.get("mobility_groups")
-            )
+            # mobility_groups = ValidateMobilityGroups.handle(
+            #     data.get("mobility_groups")
+            # ) --ERROR
             
-            disease_groups = ValidateDiseaseGroup.handle(data.get("disease_groups"))
+            # disease_groups = ValidateDiseaseGroup.handle(data.get("disease_groups"))
 
             natural_history = ValidateNaturalHistoryGroup.handle(
                 data.get("natural_history")
             )       
             
             mrt_policies = ValidateMRTPolicies.handle(data.get("mrt_policies"))     
-            
-            # initial_population_setup_list = ValidateinitialPopulationSetupList.handle(
-            #     data.get("initial_population_setup_list")
-            # )
-            
+                        
             initial_population_setup_list = data.get("initial_population_setup_list")
-            
-            
-            # quarantine_groups = ValidateSimpleGroup.handle(
-            #     data.get("quarantine_groups")
-            # )
 
-
-            # quarantine = ValidateQuarantineGroups.handle(
-            #     data.get("quarantine"),
-            #     data.get("quarantine_groups")
-            # )
+            global_cyclic_mr = ValidateGlobalCyclicMR.handle(data.get("global_cyclic_mr"))
             
+            cyclic_mr_policies = ValidateCyclicMRPolicies.handle(data.get("cyclic_mr_policies"))
+
+                        
             population = Population(
                 configuration=configuration,
                 health_system=health_system,
                 age_groups=age_groups,
                 vulnerability_groups=vulnerability_groups,
-                mr_groups=mr_groups, #son transversales?
+                mr_groups=mr_groups,
                 susceptibility_groups=susceptibility_groups,
                 mobility_groups=mobility_groups,
                 disease_groups=disease_groups,
                 natural_history=natural_history,
                 initial_population_setup_list=initial_population_setup_list,
                 mrt_policies=mrt_policies,
-                global_cyclic_mr=global_cyclic_mr, #Lo tiene QuarantineGroups
-                cyclic_mr_policies=cyclic_mr_policies, #Lo tiene QuarantineGroups
+                global_cyclic_mr=global_cyclic_mr, 
+                cyclic_mr_policies=cyclic_mr_policies, 
                 immunization_groups=immunization_groups,
                 isolation_adherence_groups=isolation_adherence_groups,
                 execmode=ExecutionModes.iterative.value,
                 evolmode=EvolutionModes.steps.value
             )
 
-            # TODO: Run execution
+            filepaths_dict = {}
+            for step in range(100):
+                population.evolve(iterations=1)
+                df = population.get_population_df()
+                filepaths_dict[step] = f"path_{step}"
 
             UploadBucketFile.handle(simulation_uuid, b'testing')
 
             FinishEmergencyExecution.handle(simulation_uuid)
-        except Exception:
+        except Exception as error:
+            print(error)
             FinishEmergencyExecution.handle(simulation_uuid, emergency=True)
 
 
