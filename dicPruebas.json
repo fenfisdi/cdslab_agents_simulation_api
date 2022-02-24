@@ -107,69 +107,344 @@
     ],
 
     "disease_groups": [
-      {
-        "identifier": "754ca8b4-e0ef-11eb-a7c3-134c296ec3fb",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
-        "name": "something",
-        "is_death": false,
-        "distributions": {}
-      },
-      {
-        "identifier": "792d821e-e0ef-11eb-9922-b5a050642a75",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
-        "name": "any other name",
-        "is_death": false,
-        "distributions": {
-          "isolation": {
-            "type": "empirical",
-            "numpy_type": null,
-            "kwargs": {},
-            "file_id": "cb0dbc40-e66f-11eb-a026-93c893c5bb81"
-          },
-          "diagnosis": {
-            "type": "empirical",
-            "numpy_type": null,
-            "kwargs": {},
-            "file_id": "24129314-e671-11eb-a026-93c893c5bb81"},
-          "icu": {
-            "type": "empirical",
-            "numpy_type": null,
-            "kwargs": {}
-          }
+        {
+            "name": "susceptible",
+            "can_get_infected": true,
+            "is_infected": false,
+            "can_spread": false,
+            "spread_radius": null,
+            "spread_radius_unit": null,
+            "spread_probability": null,
+            "is_dead": false,
+            "dist_info": [
+                {
+                    "dist_title": "diagnosis_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "isolation_days",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "hospitalization_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "ICU_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                }
+            ]
+        },
+        {
+            "name": "latency",
+            "can_get_infected": false,
+            "is_infected": true,
+            "can_spread": false,
+            "spread_radius": null,
+            "spread_radius_unit": null,
+            "spread_probability": null,
+            "is_dead": false,
+            "dist_info": [
+                {
+                    "dist_title": "diagnosis_prob",
+                    "dist_type": "constant",
+                    "constant": 0.3,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "isolation_days",
+                    "dist_type": "constant",
+                    "constant": 10,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "hospitalization_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "ICU_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                }
+            ]
+        },
+        {
+            "name": "infectious",
+            "can_get_infected": false,
+            "is_infected": true,
+            "can_spread": true,
+            "spread_radius": 3.0,
+            "spread_radius_unit": "meters",
+            "spread_probability": 0.6,
+            "is_dead": false,
+            "dist_info": [
+                {
+                    "dist_title": "diagnosis_prob",
+                    "dist_type": "constant",
+                    "constant": 0.6,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "isolation_days",
+                    "dist_type": "constant",
+                    "constant": 10,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "hospitalization_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "ICU_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                }
+            ]
+        },
+        {
+            "name": "hospital",
+            "can_get_infected": false,
+            "is_infected": true,
+            "can_spread": true,
+            "spread_radius": 4.0,
+            "spread_radius_unit": "meters",
+            "spread_probability": 0.8,
+            "is_dead": false,
+            "dist_info": [
+                {
+                    "dist_title": "diagnosis_prob",
+                    "dist_type": "constant",
+                    "constant": 1.0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "isolation_days",
+                    "dist_type": "constant",
+                    "constant": 0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "hospitalization_prob",
+                    "dist_type": "constant",
+                    "constant": 1.0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "ICU_prob",
+                    "dist_type": "constant",
+                    "constant": 0.0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                }
+            ]
+        },
+        {
+            "name": "ICU",
+            "can_get_infected": false,
+            "is_infected": true,
+            "can_spread": true,
+            "spread_radius": 4.0,
+            "spread_radius_unit": "meters",
+            "spread_probability": 1.0,
+            "is_dead": false,
+            "dist_info": [
+                {
+                    "dist_title": "diagnosis_prob",
+                    "dist_type": "constant",
+                    "constant": 1.0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "isolation_days",
+                    "dist_type": "constant",
+                    "constant": 0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "hospitalization_prob",
+                    "dist_type": "constant",
+                    "constant": 1.0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "ICU_prob",
+                    "dist_type": "constant",
+                    "constant": 1.0,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                }
+            ]
+        },
+        {
+            "name": "immune",
+            "can_get_infected": false,
+            "is_infected": false,
+            "can_spread": false,
+            "spread_radius": null,
+            "spread_radius_unit": null,
+            "spread_probability": null,
+            "is_dead": false,
+            "dist_info": [
+                {
+                    "dist_title": "diagnosis_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "isolation_days",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "hospitalization_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "ICU_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                }
+            ]
+        },
+        {
+            "name": "dead",
+            "can_get_infected": false,
+            "is_infected": false,
+            "can_spread": false,
+            "spread_radius": null,
+            "spread_radius_unit": null,
+            "spread_probability": null,
+            "is_dead": true,
+            "dist_info": [
+                {
+                    "dist_title": "diagnosis_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "isolation_days",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "hospitalization_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                },
+                {
+                    "dist_title": "ICU_prob",
+                    "dist_type": null,
+                    "constant": null,
+                    "dist_name": null,
+                    "filename": null,
+                    "data": null,
+                    "kwargs": {}
+                }
+            ]
         }
-      },
-      {
-        "identifier": "799002cc-e0ef-11eb-9922-b5a050642a75",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
-        "name": "something",
-        "is_death": false,
-        "distributions": {}
-      },
-      {
-        "identifier": "79e3982e-e0ef-11eb-9922-b5a050642a75",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
-        "name": "something",
-        "is_death": false,
-        "distributions": {}
-      },
-      {
-        "identifier": "7e704126-e0ef-11eb-9922-b5a050642a75",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
-        "name": "death",
-        "is_death": true,
-        "can_infected": false,
-        "is_infected": false,
-        "can_spread": false,
-        "distributions": {}
-      },
-      {
-        "identifier": "fcbdf9d4-e328-11eb-b5e4-7d3d3396b903",
-        "configuration": "60ce5f7dbc2b5448f53d6e90",
-        "name": "something",
-        "is_death": false,
-        "distributions": {}
-      }
     ],
+    
     "natural_history": [
       {
         "identifier": "fcbdf9d4-e328-11eb-b5e4-7d3d3396b903",
@@ -1446,7 +1721,7 @@
         "unrestricted_time":2,
         "unrestricted_time_units":"weeks"
     },
-    "cyclic_mr_policies":[
+    "cyclic_mr_policies":
         {
             "G_1": {
                 "mr_groups":["G_1", "G_2", "G_3"],
@@ -1469,5 +1744,5 @@
                 "time_without_restrictions_units":"days"
             }
         }
-    ]
+    
   }

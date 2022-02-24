@@ -36,14 +36,16 @@ class StartExecution:
         simulation_uuid = data.get("configuration").get("identifier")
         try:
             print("Procesando")
-            configuration = ValidateConfiguration.handle(data.get("configuration"))
-            
-            health_system = ValidateHealthSystem.handle(data.get("health_system"))
-            
+            configuration = ValidateConfiguration.handle(
+                data.get("configuration"))
+
+            health_system = ValidateHealthSystem.handle(
+                data.get("health_system"))
+
             age_groups = ValidateSimpleGroup.handle(data.get("age_groups"))
 
             mr_groups = ValidateMRGroup.handle(data.get("mr_groups"))
-            
+
             vulnerability_groups = ValidateSimpleGroup.handle(
                 data.get("vulnerability_groups")
             )
@@ -51,34 +53,37 @@ class StartExecution:
             susceptibility_groups = ValidateSusceptibilityGroup.handle(
                 data.get("susceptibility_groups")
             )
-            
+
             isolation_adherence_groups = ValidateIsolationAdherenceGroups.handle(
                 data.get("isolation_adherence_groups")
             )
-            
+
             immunization_groups = ValidateImmunizationGroups.handle(
                 data.get("immunization_groups")
             )
-            
-            # mobility_groups = ValidateMobilityGroups.handle(
-            #     data.get("mobility_groups")
-            # ) --ERROR
-            
-            # disease_groups = ValidateDiseaseGroup.handle(data.get("disease_groups"))
+
+            mobility_groups = ValidateMobilityGroups.handle(
+                data.get("mobility_groups")
+            )
+
+            disease_groups = ValidateDiseaseGroup.handle(
+                data.get("disease_groups"))
 
             natural_history = ValidateNaturalHistoryGroup.handle(
                 data.get("natural_history")
-            )       
-            
-            mrt_policies = ValidateMRTPolicies.handle(data.get("mrt_policies"))     
-                        
-            initial_population_setup_list = data.get("initial_population_setup_list")
+            )
 
-            global_cyclic_mr = ValidateGlobalCyclicMR.handle(data.get("global_cyclic_mr"))
-            
-            cyclic_mr_policies = ValidateCyclicMRPolicies.handle(data.get("cyclic_mr_policies"))
+            mrt_policies = ValidateMRTPolicies.handle(data.get("mrt_policies"))
 
-                        
+            initial_population_setup_list = data.get(
+                "initial_population_setup_list")
+
+            global_cyclic_mr = ValidateGlobalCyclicMR.handle(
+                data.get("global_cyclic_mr"))
+
+            cyclic_mr_policies = ValidateCyclicMRPolicies.handle(
+                data.get("cyclic_mr_policies"))
+
             population = Population(
                 configuration=configuration,
                 health_system=health_system,
@@ -91,8 +96,8 @@ class StartExecution:
                 natural_history=natural_history,
                 initial_population_setup_list=initial_population_setup_list,
                 mrt_policies=mrt_policies,
-                global_cyclic_mr=global_cyclic_mr, 
-                cyclic_mr_policies=cyclic_mr_policies, 
+                global_cyclic_mr=global_cyclic_mr,
+                cyclic_mr_policies=cyclic_mr_policies,
                 immunization_groups=immunization_groups,
                 isolation_adherence_groups=isolation_adherence_groups,
                 execmode=ExecutionModes.iterative.value,
@@ -115,7 +120,7 @@ class StartExecution:
 
 class FinishEmergencyExecution:
 
-    @classmethod
+    @ classmethod
     def handle(
         cls,
         simulation_uuid: Union[UUID, str],
@@ -130,7 +135,7 @@ class FinishEmergencyExecution:
         if is_invalid:
             raise RuntimeError("Can not stop execution in machine")
 
-    @classmethod
+    @ classmethod
     def _get_machine_information(cls) -> dict:
         for k, v in environ.items():
             print(f"{k}: {v}")
