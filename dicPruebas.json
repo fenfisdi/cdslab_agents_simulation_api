@@ -1264,8 +1264,8 @@
     ],
     "mrt_policies":[
       {
-        "dead by disease": {
-            "variable":"dead by disease",
+        "dead_by_disease": {
+            "variable":"dead_by_disease",
             "mr_start_level":100,
             "mr_stop_mode":"level_number",
             "mr_stop_level":20,

@@ -286,10 +286,10 @@ class ValidateMRTPolicies:
         policies = {}
         for mrt in data:
             mr_groups = []
-            if mrt.get("dead by disease"):
-                police = mrt.get("dead by disease")
+            if mrt.get("dead_by_disease"):
+                police = mrt.get("dead_by_disease")
                 mr_groups = SimpleGroups(names=police.get("mr_groups"))
-                policies["dead by disease"] = MRTracingPolicies(
+                policies["dead_by_disease"] = MRTracingPolicies(
                     variable=police.get("variable"),
                     mr_start_level=police.get("mr_start_level"),
                     mr_stop_mode=police.get("mr_stop_mode"),
